@@ -1,48 +1,58 @@
 import 'dart:io';
 
+import 'dart:svg';
+
 void main(List<String> args) {
+  var funcionario = [];
   bool condicao = true;
-  var nomes = [];
+  bool list = true;
   int x = 1;
 
-  print("Olá, farei uma lista com os nomes que irão a sua festa!");
+  print("Bem vindo ao sistema da folha de pagamento!");
   print(
-      "Digite 'sair', para finalizar a lista, 'remover', para remover o último item, 'editar', para editar algum nome.");
+      "Comandos: 'editar', 'remover', 'quantidade', 'sair', 'lista', 'comandos'");
+
   while (condicao) {
-    print("Digite o $x ° nome: ");
+    print("Qual fúncionario vai adentrar a empresa ?");
     var input = stdin.readLineSync();
-    if (input == "sair") {
-      condicao = false;
-    }
     if (input == "editar") {
-      print("Qual nome você quer editar ?");
-      print(
-          "Digite o número correspondente a ordem que está o nome a ser editado: ");
-      var z = stdin.readLineSync();
-      int editar = int.parse(z!);
-      print("Agora digite o novo nome, que entrará no lugar: ");
-      var novo = stdin.readLineSync();
-      nomes[editar - 1] = novo;
+      print("Digite o número correspondente ao fúncionario a ser editado: ");
+      var input2 = stdin.readLineSync();
+      int posicao = int.parse(input2!);
+      print("Qual nome você vai colocar no lugar?: ");
+      var input3 = stdin.readLineSync();
+      funcionario[posicao - 1] = input3;
     }
     if (input == "remover") {
-      print("Qual nome você quer remover ?");
+      print("Digite o número correspondente ao fúncionario a ser removido: ");
+      var input2 = stdin.readLineSync();
+      int posicao = int.parse(input2!);
+      print("O fúncionario ${funcionario[posicao - 1]} , foi removido.");
+      funcionario.removeAt(posicao - 1);
+    }
+    if (input == "quantidade") {
+      print("Existem: funcionario.Length , funcionários na empresa.");
+    }
+    if (input == "comandos") {
       print(
-          "Digite o número correspondente a ordem que está o nome a ser removido, ou digite 'f', para remover o último digitado.");
-      var y = stdin.readLineSync();
-      if (y == "f") {
-        nomes.removeLast();
-        x = x - 1;
-      } else {
-        int remove = int.parse(y!);
-        nomes.removeAt(remove - 1);
-        x = x - 1;
+          "Comandos: 'editar', 'remover', 'quantidade', 'sair', 'lista', 'comandos'.");
+    }
+    if (input == "sair") {
+      print("Programa finalizado, até a próxima. :)");
+      condicao = false;
+    }
+    if (input == "lista") {
+      list = true;
+      while (list) {
+        print("O $x° funcionário é: ${funcionario[x - 1]}");
+        x++;
+        if (x == funcionario.length) {
+          list = false;
+        }
       }
     } else {
-      if (input != "sair" && input != "editar") {
-        nomes.add(input!);
-        print("Estão autorizados a participar da festa: $nomes");
-        x = x + 1;
-      }
+      funcionario.add(input);
+      print("Funcionário adicionado com sucesso.");
     }
   }
 }
