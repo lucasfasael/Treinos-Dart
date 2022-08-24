@@ -9,7 +9,7 @@ void main(List<String> args) {
 
   while (condicao) {
     print(
-        "Comandos: 1 - Para adicionar fúncionarios, 2 - Para editar um fúncionario existente, 3 - Para remover um fúncionario, 4 - Para mostrar os dados de um fúncionario em específico, 5 - Para mostrar o nome de todos os funcionários da empresa, 6 - Para mostrar a quantidade de fúncionarios cadastrados, 7 - Para mostrar todos os dados, 8 - Para encerrar a aplicação.");
+        "Comandos: 1 - Para adicionar funcionários, 2 - Para editar um funcionário existente, 3 - Para remover um funcionário, 4 - Para mostrar os dados de um funcionário em específico, 5 - Para mostrar o nome de todos os funcionários da empresa, 6 - Para mostrar a quantidade de funcionários cadastrados, 7 - Para mostrar todos os dados, 8 - Para encerrar a aplicação.");
     opcao = int.parse(stdin.readLineSync()!);
     if (opcao == 1) {
       print("Qual o nome do funcionário ? : ");
@@ -17,7 +17,7 @@ void main(List<String> args) {
       print("Agora a idade ? : ");
       int? idade = int.parse(stdin.readLineSync()!);
       if (idade < 18) {
-        print("O fúncionario não pode ser menor de idade");
+        print("O funcionário não pode ser menor de idade");
       } else {
         print(
             "Como o funcionário se identifica a respeito do seu gênero ? 'M','F','Z' : ");
@@ -35,7 +35,7 @@ void main(List<String> args) {
     }
     if (opcao == 2) {
       print(
-          "Digite o número correspondente ao fúncionario a ser editado (checar na opção 5): ");
+          "Digite o número correspondente ao funcionário a ser editado (checar na opção 5): ");
       int input4 = int.parse(stdin.readLineSync()!);
       print("Qual o novo nome ? : ");
       String? nome = stdin.readLineSync();
@@ -50,7 +50,7 @@ void main(List<String> args) {
     }
     if (opcao == 3) {
       print(
-          "Digite o número correspondente ao fúncionario a ser removido (checar na opção 5): ");
+          "Digite o número correspondente ao funcionário a ser removido (checar na opção 5): ");
       int input4 = int.parse(stdin.readLineSync()!);
       pessoas.removeAt(input4 - 1);
     }
