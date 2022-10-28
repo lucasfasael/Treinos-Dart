@@ -1,0 +1,81 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(AppWidget());
+}
+
+class AppWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.light(),
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return HomePageState();
+  }
+}
+
+class HomePageState extends State<HomePage> {
+  int cont = 0;
+  String texto = '';
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("CodeFlix"),
+      ),
+      drawer: Drawer(
+          backgroundColor: Colors.redAccent,
+          child: ListView(
+            children: [
+              ListTile(
+                leading: Icon(Icons.stars),
+                title: Text("Favoritos"),
+                subtitle: Text("meus favoritos $texto"),
+                trailing: Icon(Icons.arrow_forward),
+                onTap: () {
+                  setState(() {
+                    texto = "-- Você pressionou o botão.";
+                  });
+                },
+                onLongPress: () {
+                  setState(() {
+                    texto = "";
+                  });
+                },
+              )
+            ],
+          )),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.favorite, color: Colors.red),
+        onPressed: () {
+          setState(() {
+            cont++;
+          });
+        },
+      ),
+      body: Container(
+        width: size.width,
+        height: size.height,
+        color: Colors.cyan,
+        child: Center(
+            child: Container(
+          decoration: BoxDecoration(
+              border: Border.all(width: 1),
+              color: Color(0xff99d1fe),
+              borderRadius: const BorderRadius.all(Radius.circular(20))),
+          width: size.width * 0.85,
+          height: size.height * 0.65,
+        )),
+      ),
+    );
+  }
+}

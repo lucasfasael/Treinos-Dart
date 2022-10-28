@@ -1,0 +1,96 @@
+Contador :
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(AppWidget(
+    title: "Contador:",
+  ));
+}
+
+class AppWidget extends StatelessWidget {
+  final String title;
+
+  const AppWidget({Key? key, required this.title}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return (MaterialApp(theme: ThemeData.dark(), home: (HomePage())));
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return HomePageState();
+  }
+}
+
+class HomePageState extends State<HomePage> {
+  int cont = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Center(
+      child: GestureDetector(
+          child: Text("Contador: $cont"),
+          onTap: (() {
+            setState(() {
+              cont++;
+            });
+          })),
+    ));
+  }
+}
+
+
+-----------
+
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(AppWidget(
+    title: "Contador App",
+  ));
+}
+
+class AppWidget extends StatelessWidget {
+  final String title;
+
+  const AppWidget({Key? key, required this.title}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return (MaterialApp(theme: ThemeData.dark(), home: (HomePage())));
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return HomePageState();
+  }
+}
+
+class HomePageState extends State<HomePage> {
+  int cont = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:
+          AppBar(backgroundColor: Colors.red, title: const Text("Oi linda")),
+      drawer: Drawer(),
+      body: Center(
+        child: GestureDetector(
+            child: Text("Contador: $cont"),
+            onTap: (() {
+              setState(() {
+                cont++;
+              });
+            })),
+      ),
+    );
+  }
+}
+
